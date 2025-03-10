@@ -1,9 +1,14 @@
- const express=require('express')
- const userController=require('../controllers/userController')
- const router=express.Router()
+const express = require('express')
+const userController = require('../controllers/userController')
+const jwtMiddleware = require('../middlewares/jwtMiddleware')
+const multerMiddleware = require('../middlewares/multerMiddleware')
+const router = express.Router()
 
- router.post('/register',userController.registerUserController)
+router.post('/register', userController.registerUserController)
 
- router.post('/login',userController.loginUserController)
+router.post('/login', userController.loginUserController)
 
-module.exports=router
+//  jwt middleware is not used anywhere now 
+router.put('/update', jwtMiddleware,multerMiddleware.single("profilePic"), userController.updateUserController)
+
+module.exports = router
