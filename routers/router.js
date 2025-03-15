@@ -17,7 +17,7 @@ router.get('/api/questions',async (req, res) => {
     try {
         const { difficulty, subject } = req.query;
         const response = await axios.get(`https://quizapi.io/api/v1/questions`, {
-            params: { limit: 10, difficulty, subject },
+            params: { limit: 10, difficulty, tags:subject },
             headers: {
                 "Content-Type": "application/json",
                 "X-Api-Key": process.env.API_KEY  // Hidden from frontend
