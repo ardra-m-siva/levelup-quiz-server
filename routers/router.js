@@ -2,6 +2,7 @@ const express = require('express')
 const userController = require('../controllers/userController')
 const jwtMiddleware = require('../middlewares/jwtMiddleware')
 const multerMiddleware = require('../middlewares/multerMiddleware')
+const streakController =require('../controllers/streakController')
 const router = express.Router()
 const axios=require('axios')
 
@@ -28,5 +29,8 @@ router.get('/api/questions',async (req, res) => {
         res.status(500).json({ message: "Error fetching questions", error: error.message });
     }
 })
+
+router.post('/streak', jwtMiddleware, streakController.addStreakController)
+router.get('/get-streak', jwtMiddleware, streakController.getStreakController)
 
 module.exports = router

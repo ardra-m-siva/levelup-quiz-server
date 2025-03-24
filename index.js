@@ -9,6 +9,8 @@ luSever.use(cors())
 luSever.use(express.json())
 luSever.use(router)
 
+luSever.use('/uploads',express.static('./uploads'))
+
 const PORT = 3000 || process.env.PORT
 luSever.listen(PORT, () => {
     console.log("Level up Server started");
