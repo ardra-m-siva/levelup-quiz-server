@@ -38,5 +38,14 @@ router.get('/skip-gift', jwtMiddleware, giftController.addSkipQuestionGiftContro
 router.get('/hint', jwtMiddleware, giftController.addHintGiftController)
 router.get('/pause-time', jwtMiddleware, giftController.addPauseTimeGiftController)
 
+// get all the gift detais 
+router.get('/all-gifts', jwtMiddleware, giftController.getAllGiftsController)
+
+// remove gifts 
+router.get('/remove-addtime', jwtMiddleware, giftController.removeAddTimeGiftController)
+router.get('/remove-skip', jwtMiddleware, giftController.removeSkipQuestionGiftController)
+router.get('/remove-hint', jwtMiddleware, giftController.removeHintGiftController)
+router.get('/remove-pause', jwtMiddleware, giftController.removePauseTimeGiftController)
+
 
 module.exports = router

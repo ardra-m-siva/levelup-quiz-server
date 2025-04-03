@@ -1,20 +1,26 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 
-const historySchema=mongoose.Schema({
-    currentLevel:{
-        type:Number,
-        required:true
+const historySchema = mongoose.Schema({
+    currentLevels: {
+        level: {
+            type: Number,
+            required: true
+        },
+        subject:{
+            type: Number,
+            required: true
+        }
     },
-    userId:{
-        type:String,
-        required:true
+    userId: {
+        type: String,
+        required: true
     },
-    gameWin:{
-        type:Number,
+    gameWin: {
+        type: Number,
         default: 0
     },
-    gameLose:{
-        type:Number,
+    gameLose: {
+        type: Number,
         default: 0
     },
     totalGames: {
@@ -27,6 +33,6 @@ const historySchema=mongoose.Schema({
     }
 })
 
-const histories= mongoose.model('histories',historySchema)
+const histories = mongoose.model('histories', historySchema)
 
-module.exports=histories
+module.exports = histories
