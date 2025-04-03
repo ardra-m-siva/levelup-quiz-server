@@ -3,17 +3,15 @@ const userController = require('../controllers/userController')
 const jwtMiddleware = require('../middlewares/jwtMiddleware')
 const multerMiddleware = require('../middlewares/multerMiddleware')
 const streakController =require('../controllers/streakController')
+const giftController=require('../controllers/giftController')
 const router = express.Router()
 const axios=require('axios')
 
 router.post('/register', userController.registerUserController)
-
 router.post('/login', userController.loginUserController)
-
-//  jwt middleware is not used anywhere now 
 router.put('/update', jwtMiddleware,multerMiddleware.single("profilePic"), userController.updateUserController)
-// api to fetch the questions
 
+// api to fetch the questions
 router.get('/api/questions',async (req, res) => {
     try {
         const { difficulty, subject } = req.query;
@@ -30,7 +28,15 @@ router.get('/api/questions',async (req, res) => {
     }
 })
 
+// streak handling
 router.post('/streak', jwtMiddleware, streakController.addStreakController)
 router.get('/get-streak', jwtMiddleware, streakController.getStreakController)
+
+// add gifts to a person - gift handling
+router.get('/addtime-gift', jwtMiddleware, giftController.addTimeGiftController)
+router.get('/skip-gift', jwtMiddleware, giftController.addSkipQuestionGiftController)
+router.get('/hint', jwtMiddleware, giftController.addHintGiftController)
+router.get('/pause-time', jwtMiddleware, giftController.addPauseTimeGiftController)
+
 
 module.exports = router
