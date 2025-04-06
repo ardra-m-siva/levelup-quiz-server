@@ -109,7 +109,7 @@ exports.removeAddTimeGiftController = async (req, res) => {
         if (existingUser.addOnTime>0) {
             existingUser.addOnTime -= 1
             existingUser.save()
-            res.status(201).json(existingUser)
+            res.status(200).json(existingUser)
         }
     } catch (err) {
         res.status(404).json(err)
@@ -124,7 +124,7 @@ exports.removeSkipQuestionGiftController = async (req, res) => {
         if (existingUser.skipQuestion>0) {
             existingUser.skipQuestion -= 1
             existingUser.save()
-            res.status(201).json(existingUser)
+            res.status(200).json(existingUser)
         }
     } catch (err) {
         res.status(404).json(err)
@@ -139,7 +139,7 @@ exports.removeHintGiftController = async (req, res) => {
         if (existingUser.hint>0) {
             existingUser.hint -= 1
             existingUser.save()
-            res.status(201).json(existingUser)
+            res.status(200).json(existingUser)
         }
     } catch (err) {
         res.status(404).json(err)
@@ -154,7 +154,7 @@ exports.removePauseTimeGiftController = async (req, res) => {
         if (existingUser.pauseTime>0) {
             existingUser.pauseTime -= 1
             existingUser.save()
-            res.status(201).json(existingUser)
+            res.status(200).json(existingUser)
         }
     } catch (err) {
         res.status(404).json(err)

@@ -1,35 +1,36 @@
 const mongoose = require('mongoose')
 
 const historySchema = mongoose.Schema({
-    currentLevels: {
-        level: {
-            type: Number,
-            required: true
-        },
-        subject:{
-            type: Number,
-            required: true
-        }
-    },
     userId: {
         type: String,
         required: true
     },
-    gameWin: {
+    currentLevels: {
+        level: {
+            type: Number,
+            required: true,
+            default:1
+        },
+        subject: {
+            type: Number,
+            required: true
+        },
+        wins: {
+            type: Number,
+            required: true
+        },
+        lose:{
+            type: Number,
+            required: true
+        }
+    },
+    totalGameWin: {
         type: Number,
         default: 0
     },
-    gameLose: {
+    totalGameLose: {
         type: Number,
         default: 0
-    },
-    totalGames: {
-        type: Number,
-        default: function () { return this.gameWin + this.gameLose; }
-    },
-    lastPlayedAt: {
-        type: Date,
-        default: Date.now
     }
 })
 

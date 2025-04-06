@@ -47,5 +47,6 @@ router.get('/remove-skip', jwtMiddleware, giftController.removeSkipQuestionGiftC
 router.get('/remove-hint', jwtMiddleware, giftController.removeHintGiftController)
 router.get('/remove-pause', jwtMiddleware, giftController.removePauseTimeGiftController)
 
+// add game details
 
 module.exports = router
