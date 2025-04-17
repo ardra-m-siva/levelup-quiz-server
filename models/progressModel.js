@@ -30,7 +30,7 @@ const historySchema = mongoose.Schema({
     },
     totalGameLose: {
         type: Number,
-        default: 0
+        default: 0 
     }
 })
 
