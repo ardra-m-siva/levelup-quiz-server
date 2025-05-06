@@ -59,4 +59,8 @@ router.get('/get-testimonial',textimonialController.getTestimonialsController)
 // add game details
 router.get('/game-start',jwtMiddleware,progressController.getProgressForSubject)
 router.post('/game-end',jwtMiddleware,progressController.addProgressNowController)
+
+// progress Data Details
+router.get('/game-progress',jwtMiddleware,progressController.getAllProgressDataDetails)
+
 module.exports = router

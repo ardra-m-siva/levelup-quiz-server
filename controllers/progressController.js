@@ -39,7 +39,7 @@ exports.addProgressNowController = async (req, res) => {
                     subject,
                     level,
                     wins: isWin ? 1 : 0,
-                    lose: isWin ? 0 : 1
+                    lose: isWin ? 0 : 1 
                 }],
                 totalGameWin: isWin ? 1 : 0,
                 totalGameLose: isWin ? 0 : 1
@@ -69,3 +69,19 @@ exports.getProgressForSubject = async (req, res) => {
         res.status(500).json({ message: "Error fetching progress", error: err });
     }
 };
+
+exports.getAllProgressDataDetails=async(req,res)=>{
+    console.log("inside getAllProgressDataDetails");
+    const userId = req.userId;
+    try{
+        const historyDetails=await histories.findOne({userId})
+        if(historyDetails){
+            res.status(200).json(historyDetails)
+        }else{
+            res.status(400).json("No Details Found")
+        }
+    }catch(err){
+        res.status(500).json(err)
+    }
+    
+}

@@ -2,7 +2,7 @@ const testimonials = require('../models/textimonialModel')
 
 exports.addTestimonialController = async (req, res) => {
     console.log("inside addTestimonialController");
-    const { name, email, message } = req.body
+    const { name, email, message } = req.body   
     try {
         const existingUser=await testimonials.findOne({email})
         if(existingUser){
@@ -14,12 +14,13 @@ exports.addTestimonialController = async (req, res) => {
                 message
             })
             await newTestimonial.save()
-            res.status(200).json({message:"Testimonial Added",result:newTestimonial})
+            res.status(200).json({message:"Response Added",output:newTestimonial})
         }
     } catch (err) {
         res.status(500).json({ message: err })
     }
 }
+
 exports.getTestimonialsController=async(req,res)=>{
     console.log("inside getTestimonialsController");
     try{

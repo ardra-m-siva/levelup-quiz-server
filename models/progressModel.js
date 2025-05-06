@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
 const subjectProgressSchema = new mongoose.Schema({
-    subject: { type: String, unique: true, required: true },
+    subject: {
+        type: String,
+        unique: true,
+        required: true
+    },
     level: { type: Number, required: true },
     wins: { type: Number, default: 0 },
     lose: { type: Number, default: 0 }
