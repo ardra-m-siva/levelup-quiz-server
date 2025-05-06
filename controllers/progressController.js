@@ -3,8 +3,8 @@ const histories = require("../models/progressModel")
 exports.addProgressNowController = async (req, res) => {
     const userId = req.userId
     const { subject, level, isWin } = req.body;
+    console.log(level, subject,isWin);
     try {
-        console.log(level, subject,isWin);
         
         const history = await histories.findOne({ userId });
         if (history){

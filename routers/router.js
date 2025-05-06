@@ -4,10 +4,13 @@ const jwtMiddleware = require('../middlewares/jwtMiddleware')
 const multerMiddleware = require('../middlewares/multerMiddleware')
 const streakController =require('../controllers/streakController')
 const giftController=require('../controllers/giftController')
+const textimonialController=require('../controllers/textimonialController')
+const progressController=require('../controllers/progressController')
+
 const router = express.Router()
 const axios=require('axios')
-const { getProgressForSubject, addProgressNowController } = require('../controllers/progressController')
 
+// user details and logins
 router.post('/register', userController.registerUserController)
 router.post('/login', userController.loginUserController)
 router.put('/update', jwtMiddleware,multerMiddleware.single("profilePic"), userController.updateUserController)
@@ -48,7 +51,12 @@ router.get('/remove-skip', jwtMiddleware, giftController.removeSkipQuestionGiftC
 router.get('/remove-hint', jwtMiddleware, giftController.removeHintGiftController)
 router.get('/remove-pause', jwtMiddleware, giftController.removePauseTimeGiftController)
 
+// testimonail section
+router.post('/add-testimonial',textimonialController.addTestimonialController)
+router.get('/get-testimonial',textimonialController.getTestimonialsController)
+
+
 // add game details
-router.get('/game-start',jwtMiddleware, getProgressForSubject)
-router.post('/game-end',jwtMiddleware, addProgressNowController)
+router.get('/game-start',jwtMiddleware,progressController.getProgressForSubject)
+router.post('/game-end',jwtMiddleware,progressController.addProgressNowController)
 module.exports = router
