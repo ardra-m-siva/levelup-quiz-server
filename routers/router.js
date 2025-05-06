@@ -6,6 +6,7 @@ const streakController =require('../controllers/streakController')
 const giftController=require('../controllers/giftController')
 const router = express.Router()
 const axios=require('axios')
+const { getProgressForSubject, addProgressNowController } = require('../controllers/progressController')
 
 router.post('/register', userController.registerUserController)
 router.post('/login', userController.loginUserController)
@@ -48,5 +49,6 @@ router.get('/remove-hint', jwtMiddleware, giftController.removeHintGiftControlle
 router.get('/remove-pause', jwtMiddleware, giftController.removePauseTimeGiftController)
 
 // add game details
-
+router.get('/game-start',jwtMiddleware, getProgressForSubject)
+router.post('/game-end',jwtMiddleware, addProgressNowController)
 module.exports = router
