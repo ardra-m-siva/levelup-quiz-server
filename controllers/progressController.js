@@ -3,9 +3,8 @@ const histories = require("../models/progressModel")
 exports.addProgressNowController = async (req, res) => {
     const userId = req.userId
     let { subject, level, isWin } = req.body;
-    console.log(level, subject, isWin);
-
     subject = subject.trim().toLowerCase();
+    console.log(level,typeof level, subject,typeof subject, isWin,typeof isWin);
 
     try {
         let history = await histories.findOne({ userId });
@@ -29,8 +28,10 @@ exports.addProgressNowController = async (req, res) => {
            const subjectIndex = history.subjectProgress.findIndex(
                 p => p.subject.trim().toLowerCase() === subject
             );
+            console.log("subjectIndex",subjectIndex)
 
             if (subjectIndex !== -1) {
+                console.log("Before saving, subjectProgress:", history.subjectProgress[subjectIndex]);
                 // Update existing
                 if (isWin) {
                     history.subjectProgress[subjectIndex].wins += 1;
