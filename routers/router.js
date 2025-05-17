@@ -9,6 +9,7 @@ const progressController=require('../controllers/progressController')
 
 const router = express.Router()
 const axios=require('axios')
+const AuthenticationMiddleware = require('../middlewares/AuthenticationMiddleware')
 
 // user details and logins
 router.post('/register', userController.registerUserController)
@@ -62,5 +63,9 @@ router.post('/game-end',jwtMiddleware,progressController.addProgressNowControlle
 
 // progress Data Details
 router.get('/game-progress',jwtMiddleware,progressController.getAllProgressDataDetails)
+
+// admin section
+router.get('/get-user',jwtMiddleware,userController.allUserController) //athentication middleware is imported
+
 
 module.exports = router

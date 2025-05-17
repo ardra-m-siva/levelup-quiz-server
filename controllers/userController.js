@@ -54,3 +54,16 @@ exports.updateUserController = async (req, res) => {
     }
 
 }
+
+
+exports.allUserController = async (req, res) => {
+    try {
+        const allUser = await users.find({ role: { $ne: 'Admin' } }).select('-password'); 
+        console.log(allUser);
+        
+        res.status(200).json(allUser)
+    } catch (err) {
+        res.status(401).json(err)
+    }
+
+}

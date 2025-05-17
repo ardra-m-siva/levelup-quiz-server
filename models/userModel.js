@@ -16,6 +16,10 @@ const userScheme=mongoose.Schema({
     },
     profilePic:{
         type:String,
+    },
+    role:{
+        type:String,
+        default:"User"
     }
 })
 
