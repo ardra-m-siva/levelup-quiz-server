@@ -79,5 +79,13 @@ exports.updateTestimonialCrossController = async (req, res) => {
         res.status(500).json(error)
 
     }
-
 }
+
+exports.getAllTestimonialCountController = async (req, res) => {
+  try {
+    const count = await testimonials.countDocuments(); // counts all documents in the collection except admin
+    res.status(200).json(count);
+  } catch (error) {
+    res.status(500).json("Failed to get user count" );
+  }
+};

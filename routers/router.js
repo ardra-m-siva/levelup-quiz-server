@@ -69,6 +69,8 @@ router.get('/get-user',jwtMiddleware,userController.allUserController)
 router.get('/all-testimonial',jwtMiddleware,textimonialController.getTestimonialsAdminController) 
 router.put('/check-testimonial',jwtMiddleware,textimonialController.updateTestimonialCheckController) 
 router.put('/cross-testimonial',jwtMiddleware,textimonialController.updateTestimonialCrossController) 
+router.get('/user-count',jwtMiddleware,userController.getAllUserCountController) 
+router.get('/testimonial-count',jwtMiddleware,textimonialController.getAllTestimonialCountController) 
 
 
 module.exports = router
