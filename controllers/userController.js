@@ -55,7 +55,6 @@ exports.updateUserController = async (req, res) => {
 
 }
 
-
 exports.allUserController = async (req, res) => {
     try {
         const allUser = await users.find({ role: { $ne: 'Admin' } }).select('-password'); 
